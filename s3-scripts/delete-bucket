@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh 
+echo "Deleting Bucket..."
+
+# Check for bucket name
+
+if [ -z "$1" ]; then
+echo "Error:NoBucketName"
+exit 1
+fi 
+
+BUCKET_NAME=$1 
+
+
+
+# https://docs.aws.amazon.com/cli/latest/reference/s3api/delete-bucket.html
+
+aws s3api delete-bucket --bucket $BUCKET_NAME 
+
+if [ $? -ne 0 ]; then
+  echo "Error:FailedToDeleteBucket"
+  exit 1
+fi
+

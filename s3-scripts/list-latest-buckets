@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+# List latest Buckets with time mentioned in minutes.
+aws s3api list-buckets --output json | jq -r '
+  .Buckets | sort_by(.CreationDate) | reverse | .[:5][] |
+  . as $b | .CreationDate |= sub("\\+.*$"; "") |
+  ($b.Name) + "    " + (((now | tonumber) - (.CreationDate | strptime("%Y-%m-%dT%H:%M:%S") | mktime)) / 60 | floor | tostring + " mins ago")
+'
