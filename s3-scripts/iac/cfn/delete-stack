@@ -1,0 +1,6 @@
+ #!/usr/bin/ env zsh
+ 
+ aws cloudformation delete-stack \
+ --stack-name sinxlpost-Stack \
+ --region ap-south-1
+ 
