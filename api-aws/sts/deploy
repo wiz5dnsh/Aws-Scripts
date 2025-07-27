@@ -5,3 +5,6 @@ aws cloudformation deploy \
 --stack-name my-sts-funabab-11 \
 --capabilities CAPABILITY_IAM
 
+
+
+
